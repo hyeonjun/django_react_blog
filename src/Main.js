@@ -53,7 +53,7 @@ function Main(){
                             <div className="Links">
                                 
                                 <Link to="Primium">
-                                프리미엄 파트너
+                                프리미엄 파트너_1
                                 </Link>
                                 
                                 <Link to="Teacher">
