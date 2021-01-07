@@ -1,4 +1,4 @@
-Hello REACT - !
+CHANMO JUNG
 
 # Getting Started with Create React App
 
