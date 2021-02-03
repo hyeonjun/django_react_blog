@@ -20,12 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6yfj0##&1+g_73bx(f=#vb0ld+jk!tux$%ign127*=ot5g8yl!'
+import os
+SECRET_KEY =os.environ['DJANGO']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False # 배포할때는 False로 바꿔야함
 APPEND_SLASH = False
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['39.118.174.168']
 
 
 # Application definition
@@ -61,11 +62,11 @@ CHANNEL_LAYERS = {
 
 CKEDITOR_UPLOAD_PATH = 'board/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_CONFIGS={
-    'default':{
-        'contentsCss':'img {width:360; height:auto! important;}',
-    }
-}
+# CKEDITOR_CONFIGS={
+#     'default':{
+#         'contentsCss':'img {width:360; height:auto! important;}',
+#     }
+# }
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMOSSION_CLASSES': (
