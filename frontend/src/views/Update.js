@@ -5,6 +5,8 @@ import CKEditor from 'ckeditor4-react-advanced';
 import {Form} from "react-bootstrap";
 import {useLocation} from "react-router";
 import jQuery from "jquery";
+import '../views/Detail.css';
+import '../views/Boardwrite.css';
 window.$ = window.jQuery = jQuery;
 
 const titleStyle = {
@@ -147,10 +149,10 @@ function Update(props){
 
 
     const handleEffect = (handleSubmit) => {
-        // if(InfomationfilterList === "" || InfomationfilterList.length === 0){
-        //     alert("한 개 이상의 언어를 선택해주세요.")
-        //     return;
-        // }
+        if(InfomationfilterList === "" || InfomationfilterList.length === 0){
+            alert("한 개 이상의 언어를 선택해주세요.")
+            return;
+        }
         if(title === undefined || title === "" || title === null){
             alert("제목을 다시 입력해주세요")
             return;
@@ -200,6 +202,7 @@ function Update(props){
 
     return(
         <>
+        <div className="trend-section">
             <div className="detail__container">
                 <div className="detail__head-wrapper">
                     <h1>{detailList.title}</h1>
@@ -231,9 +234,9 @@ function Update(props){
                             (
                                 <>   
                                 {
-                                    InfomationfilterList.map((a, i)=>{
+                                    InfomationfilterList.map((a, id)=>{
                                         return(
-                                            <p key={i}>#{a}</p>
+                                            <p key={id}>#{a}</p>
                                         )
                                     })
                                 }
@@ -325,46 +328,45 @@ function Update(props){
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="fillter_section">
-            <aside className="pDRpR">
+          </div>
+            
+          <aside className="pDRpR">
             <div className="eyrfCG">
-              <div className="filter__head" />
-                <ul style={{ listStyleType: "none"}}>
-                 {
+                <div className="filter__head">
+                </div>
+                <section>
+                <ul style={{listStyleType: "none"}}>
+                    {
                     filterList.map((a)=>{
+                        
                         let boolenChecked = false
                         if(InfomationfilterList.indexOf(a.infomation) !== -1){
                             boolenChecked = true
                         }
                         return(
                         <li key={a.id}>
-                            <input id={a.infomation} className="filters-input__checkboxs" value="action" type="checkbox" data-type="genres" defaultChecked={boolenChecked}></input>
-                            {
-                                console.log(a.infomation +":"+ boolenChecked)                                
-                            }
-                            <label className="input__labels" htmlFor={a.infomation} onClick={()=>{ClickFilter(a.infomation)}}>
-                              <span> {a.infomation} </span>
-                               <span className="filters-input__ticks">
-                                <svg 
-                                focusable="false" aria-hidden="true"
+                            <input id={a.infomation} className="filters-input__checkboxs" value="action" type="checkbox" data-type="genres" checked={boolenChecked}></input>
+                            <label className="input__label | filters-input__label--checkbox" htmlFor={a.infomation} onClick={()=>{ClickFilter(a.infomation)}}>
+                            <span>{a.infomation}</span>
+                            <span className="filters-input__tick">
+                                <svg focusable="false" aria-hidden="true"
                                 width="15"
                                 height="15">
                                 <use xlinkHref="#check">
-                                <svg viewBox="0 0 24 24" id="check" xmlns="http://www.w3.org/2000/svg"><path d="M9 21.035l-9-8.638 2.791-2.87 6.156 5.874 12.21-12.436L24 5.782z"></path></svg>
+                                    <svg viewBox="0 0 24 24" id="check" xmlns="http://www.w3.org/2000/svg"><path d="M9 21.035l-9-8.638 2.791-2.87 6.156 5.874 12.21-12.436L24 5.782z"></path></svg>
                                 </use>
                                 </svg>
-                              </span>
+                            </span>
                             </label>
                         </li>
                         )
                     })
-                  }
+                    }
                 </ul>
-                
-               </div>  
+                </section>
+            </div>  
             </aside>
-            </div>
+        </div>
         </>
     )
 }
