@@ -1,0 +1,154 @@
+.navbar {
+    
+    position: relative;
+    left: 70px;
+    top: 8px;
+
+}
+
+.menu-bars {
+    
+    font-size: 25px;
+    
+}
+
+.nav-menu {
+    background-color: rgba(254, 255, 185, 0.89);
+    width: 310px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    transition: 800ms;
+    border-radius: 30px;
+}
+
+.nav-menu.active {
+    right: 0;
+    transition: 800ms;
+}
+
+.nav-text {
+    display: flex;
+    /* justify-content: start; */
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-text a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-radius: 10px;
+    
+}
+
+.nav-text a:hover {
+    background-color: #9cff1a;
+    
+}
+
+.nav-menu-items {
+    width: 100%;
+    
+}
+
+.navbar-toggle {
+
+    width: 100%;
+    height: 75px;
+    display: flex;
+    /* justify-content: start; */
+    align-items: center;
+    
+    
+}
+
+.nav-menu span {
+    margin-left: 20px;
+    
+}
+/* 포인트 css 부분 */
+.here {
+    width: 920px;
+    height: 600px;
+    border: 2px solid rgb(155, 154, 154);
+    border-radius: 20px;
+    margin-left: 500px;
+    margin-top: 40px;
+    
+}
+
+.here .here_left {
+
+    width: 410px;
+    height: 500px;
+    margin: 50px;
+    
+}
+
+.here .here_right {
+ 
+    width: 410px;
+    height: 500px;
+    position: relative;
+    left: 460px;
+    bottom: 550px;
+    
+}
+
+.extendedIcon {
+    margin-top: 10px;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+
+.check {
+    position: relative;
+    left: 240px;
+    bottom: 37px;
+}
+
+
+.logout {
+    width: 280px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: rgba(254, 255, 185, 0.89);
+    margin-left: 16px;
+    margin-top: 10px;
+    border: solid 1px rgb(168, 168, 168);
+    cursor: pointer;
+}
+
+/* .nav-logout .logout a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-radius: 10px;
+    
+}
+
+.nav-logout .logout a:hover {
+    background-color: #9cff1a;
+    
+} */

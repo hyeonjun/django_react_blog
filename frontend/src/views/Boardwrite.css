@@ -1,0 +1,80 @@
+
+.container-section{
+    width: 40%;
+    height: 100%;
+    margin-left: 30%;
+    margin-top : 3%;
+  }
+ 
+  /* aside bar */
+
+.pDRpRs {
+  margin-bottom: 10px;
+  width: 150px;
+  height: 330px;
+  position: relative;
+  left: 1350px;
+  bottom: 335px;
+}
+
+.input__labels{
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 130px;
+  padding: .375em 0 .475em 1.7em;
+  cursor: pointer;
+  font-size: 16px;
+}
+.input__labels:before{
+  border: 1px solid #333;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0.6em;
+  height: 0.6em;
+  margin-top: -.17em;
+  transition: border-color .15s cubic-bezier(.645,.045,.355,1);
+  content: "";
+  box-sizing: inherit;
+  border-radius: 3px;
+}
+section ul li{
+  margin-right: 50px;
+  width: 160px;
+}
+section ul li label{
+  font-size: 20px;
+}
+.filters-input__ticks{
+  position: absolute;
+  top: 50%;
+  left: .5em;
+  width: .6em;
+  height: .6em;
+  margin-top: -.75em;
+  margin-left: -.5em;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity .15s cubic-bezier(.645,.045,.355,1),transform .15s cubic-bezier(.645,.045,.355,1);
+}
+input:checked+label
+.filters-input__ticks {
+  opacity: 1;
+  transform: scale(1);
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+.filters-input__ticks svg {
+  fill: #333;
+}
+:not(svg) {
+  transform-origin: 0px 0px;
+}
+.filters-input__checkboxs {
+  display: none;
+}
+label {
+  cursor: default;
+}
