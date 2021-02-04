@@ -24,9 +24,10 @@ import os
 SECRET_KEY =os.environ['DJANGO']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # 배포할때는 False로 바꿔야함
+DEBUG = True # 배포할때는 False로 바꿔야함
 APPEND_SLASH = False
 ALLOWED_HOSTS = ['39.118.174.168']
+
 
 
 # Application definition
@@ -165,13 +166,13 @@ WSGI_APPLICATION = 'djangoreactapi.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+# print(os.environ['DATABASE'])
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ecenter',
         'USER': 'ecenter',
-        'PASSWORD': 'qwer1234',
+        'PASSWORD': os.environ['DATABASE'],
         'HOST': '39.118.174.168',
         'PORT': '3307'
     }
