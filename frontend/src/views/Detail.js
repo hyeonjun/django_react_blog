@@ -21,7 +21,7 @@ function Detail(props){
     let [currnetUser, setCurrentUser] = useState({});
     
     useEffect(()=>{
-        fetch('http://39.118.174.168:8000/board/'+ props.path + pgN + "/")
+        fetch('http://39.118.174.168:3653/board/'+ props.path + pgN + "/")
         .then((res)=>res.json())
             .then((posts)=>{
                 console.log(posts)
@@ -32,14 +32,14 @@ function Detail(props){
                 setDetailDate(Y + "년 " + M + "월 " + D + "일")
                 setDetailLang(posts.infomation.split(','))
                 setDetailLikedUser(posts.likedUser.split(','))
-                fetch('http://39.118.174.168:8000/api/current_user/', {
+                fetch('http://39.118.174.168:3653/api/current_user/', {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
                 }
                 })
                 .then(res => res.json())
                 .then(json => {
-                fetch('http://39.118.174.168:8000/api/profile/' + json.id + '/update/',{
+                fetch('http://39.118.174.168:3653/api/profile/' + json.id + '/update/',{
                         method : 'PATCH',
                         headers: {
                             Authorization: `JWT ${localStorage.getItem('token')}`
@@ -50,7 +50,7 @@ function Detail(props){
                         setCurrentUser(userData)
                     })
                 })  
-                fetch('http://39.118.174.168:8000/api/profile/' + posts.user_id + '/')
+                fetch('http://39.118.174.168:3653/api/profile/' + posts.user_id + '/')
                 .then((res)=>res.json())
                 .then((info)=>{
                     setDetailUserInfo(info)
@@ -68,7 +68,7 @@ function Detail(props){
         if((currnetUser.user_id === detailList.user_id) || currnetUser.Tier === "운영자"){
             if(window.confirm('정말 삭제하시겠습니까 ?')===true){
                 // timeSensativeAction()
-                fetch('http://39.118.174.168:8000/board/'+ props.path + pgN + "/delete/", {
+                fetch('http://39.118.174.168:3653/board/'+ props.path + pgN + "/delete/", {
                 method : 'DELETE',
                 headers: {
                     Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -137,7 +137,7 @@ function Detail(props){
         form_data.append('like', sendData.like);
         form_data.append('likedUser', sendData.likedUser);
 
-        fetch('http://39.118.174.168:8000/board/'+ props.path + pgN + "/update/", {
+        fetch('http://39.118.174.168:3653/board/'+ props.path + pgN + "/update/", {
             method : 'PATCH',
             headers: {
                 Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -147,7 +147,7 @@ function Detail(props){
         .then(res => res.json())
         .catch(error => console.error('Error:', error))
         .then(()=>{
-            fetch('http://39.118.174.168:8000/board/'+ props.path + pgN + "/")
+            fetch('http://39.118.174.168:3653/board/'+ props.path + pgN + "/")
             .then((res)=>res.json())
             .then((posts)=>{
                 setDetailList(posts)

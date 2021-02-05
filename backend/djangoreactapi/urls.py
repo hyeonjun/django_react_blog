@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include('userInfo.urls')),
     path('api/validate/', getUsername.as_view()),
-    path('chat/', include('chat.urls')),
+    path('chat/', include('chat.api.urls', namespace='chat')),
     path('board/', include('board.urls')),
 ]
 urlpatterns += \

@@ -57,7 +57,7 @@ function Profile(props){
     let [userName, setUserName] = useState()
 
     useEffect(()=>{
-        fetch('http://39.118.174.168:8000/api/current_user/', {
+        fetch('http://39.118.174.168:3653/api/current_user/', {
           headers: {
             Authorization: `JWT ${localStorage.getItem('token')}`
           }
@@ -68,7 +68,7 @@ function Profile(props){
           if (json.id) {
             setUserId(json.id)
             //유저정보를 받아왔으면 해당 user의 프로필을 받아온다.
-        }fetch('http://39.118.174.168:8000/api/profile/' + json.id + '/update/',{
+        }fetch('http://39.118.174.168:3653/api/profile/' + json.id + '/update/',{
                 method : 'PATCH',
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
@@ -124,7 +124,7 @@ function Profile(props){
         form_data.append('grade', sendData.grade);
         form_data.append('myIntro', sendData.myIntro);
         form_data.append('Tier', sendData.Tier);
-        fetch('http://39.118.174.168:8000/api/profile/' + userId + '/update/', {
+        fetch('http://39.118.174.168:3653/api/profile/' + userId + '/update/', {
             method : 'PATCH',
             headers: {
                 Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -140,7 +140,7 @@ function Profile(props){
         let form_data = new FormData();
         let fileField = document.querySelector('input[type="file"]');
         form_data.append('photo', fileField.files[0]);
-        fetch('http://39.118.174.168:8000/api/profile/' + userId + '/update/', {
+        fetch('http://39.118.174.168:3653/api/profile/' + userId + '/update/', {
             method : 'PATCH',
             headers: {
                 Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -153,14 +153,14 @@ function Profile(props){
 
     const DeleteUser = ()=>{
         if(window.confirm('정말 삭제하시겠습니까 ?')===true){
-            fetch('http://39.118.174.168:8000/api/current_user/', {
+            fetch('http://39.118.174.168:3653/api/current_user/', {
                 headers: {
                 Authorization: `JWT ${localStorage.getItem('token')}`
                 }
             })
             .then(res => res.json())
             .then(json => {
-                fetch('http://39.118.174.168:8000/api/profile/' + json.id + '/delete/',{
+                fetch('http://39.118.174.168:3653/api/profile/' + json.id + '/delete/',{
                     method : 'DELETE',
                     headers: {
                         Authorization: `Token ${localStorage.getItem('token')}`,

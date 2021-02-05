@@ -62,8 +62,8 @@ function RegisterPage(props) {
   const [phonenum, setPhone] = useState("010");
   const [username, setUserName] = useState("");
 
-
   const onUserNameHandler = (e) => {
+    props.setConfirm(false);
     setUserName(e.currentTarget.value);
   };
 
@@ -76,29 +76,67 @@ function RegisterPage(props) {
   };
   
   const onNameHandler = (e) => {
-    setName(e.currentTarget.value);
+    const curValue = e.currentTarget.value;
+    const newValue = curValue.replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, '');
+    setName(newValue);
   };
 
 
   const onPhonenumHandler = (e) => {
-    setPhone(e.currentTarget.value);
+    const curValue = e.currentTarget.value;
+    const newValue = curValue.replace(/[^0-9]/g, '');
+    if(newValue.length <= 11)
+      {setPhone(newValue);}
   };
 
   const onEmailHandler = (e) => {
     setEmail(e.currentTarget.value);
   };
 
+  const username_ex = useState([]);
+  const IdConfirm = (e) => {
+    fetch('http://39.118.174.168:3653/api/list/')
+    .then(res => res.json())
+    .then((post) =>{
+      
+      post.slice(0).map((a) =>{
+        username_ex.push(a.username)
+      })
+      if(username.length >= 5){
+        if(username_ex.indexOf(username) !== -1) {
+          alert("중복된 아이디입니다.");
+        } else{
+          alert("사용가능한 아이디입니다.");
+          props.setConfirm(true);
+        }
+      }
+      else{
+        alert("아이디가 5자 이상이여야 합니다.")
+      }
+      
+      // if(post.username.indexOf(username) !== -1 ){
+      //   console.log("same")
+      // }
+    })
+  };
+  const emailConfirm = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    if (props.idConfirm === true){
+    if (password.length >= 8){
     if (password === ConfirmPasword) {
-        const body = {
+    if (phonenum.length === 11){
+    if (first_name.length === 3 || first_name.length === 2 || first_name.length === 4){
+    if (email.length >= 7){
+    if (emailConfirm.test(email)){
+      const body = {
             username: username,
             password : password,
             first_name : first_name,
             phonenum : phonenum,
             email : email,
         };
-    fetch('http://39.118.174.168:8000/api/register/', {
+    fetch('http://39.118.174.168:3653/api/register/', {
       method: 'POST',
       headers:{
         "Content-Type": "application/json"
@@ -109,17 +147,38 @@ function RegisterPage(props) {
       if (json.username && json.token) {
         alert("가입이 정상적으로 완료되었습니다.");
         props.userHasAuthenticated(true, json.username, json.token);
-        props.history.push("/login");
+        props.history.push("/");
         props.setModal(true);
-      }else{
-        alert("사용불가능한 아이디입니다.")
       }
     }).catch(error => alert(error));
-    } else{
+  } else{
+    alert("정확한 이메일을 입력해주세요");
+  }
+  } else {
+      alert("정확한 이메일을 입력해주세요");
+    } 
+  } else {
+    alert("정확한 이름을 입력해주세요");
+    } 
+  } else {
+      alert("정확한 전화번호를 입력해주세요.");
+    }
+  } else{
         alert("비밀번호가 일치하지 않습니다.");
-      }
-  };
+    }
+  } else{
+      alert("비밀번호가 너무 짧습니다.");
+    }
+  } else{
+      alert("아이디 중복 확인이 필요합니다.");
+    }
+};
 
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") 
+         return onSubmitHandler(e);
+  };
 
   return (
 
@@ -137,7 +196,7 @@ function RegisterPage(props) {
         </Typography>
 
 
-      <form onSubmit={onSubmitHandler}>
+      <form>
       <Grid container spacing={2}>
 
       <Grid item xs={12} sm={12}>
@@ -150,6 +209,8 @@ function RegisterPage(props) {
                 value={username}
                 onChange={onUserNameHandler}
               />
+              
+
             </Grid>
 
             <Grid item xs={12}>
@@ -222,12 +283,28 @@ function RegisterPage(props) {
               />
               </Grid>
               </Grid>
-        
-        <Button type="submit"
+        {
+          props.idConfirm === true ?
+          <>
+            <Button onClick={onSubmitHandler}
                 fullWidth
                 variant="contained"
                 color="primary"
+                onKeyPress={handleKeyPress}
                 >회원 가입</Button>
+          </>
+          : 
+          <>
+            <Button onClick={IdConfirm}
+              fullWidth
+              variant="contained"
+              color="primary"
+              onKeyPress={handleKeyPress}
+            >중복 확인
+            </Button>
+          </>
+        }
+        
 
 
 
@@ -248,4 +325,3 @@ function RegisterPage(props) {
 }
 
 export default withRouter(RegisterPage);
-

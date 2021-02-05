@@ -84,7 +84,7 @@ function LoginPage(props) {
       username: username,
       password: Password,
     };
-    await fetch('http://39.118.174.168:8000/api/login/', {
+    await fetch('http://39.118.174.168:3653/api/login/', {
       method: 'POST',
       headers: {
         'Content-Type':'application/json'
@@ -108,6 +108,32 @@ function LoginPage(props) {
     }).catch(error => alert(error));
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") 
+         return onSubmitHandler(e);
+  };
+  // const IsAlphaNumeric = (ee) => {
+  //     const keyCode = ee.keyCode === 0 ? ee.charCode : ee.keyCode;
+  //     // 예외키 규정
+  //     const specialKeys = useState([]);
+  //     specialKeys.push(8); //Backspace
+  //     specialKeys.push(9); //Tab
+  //     specialKeys.push(46); //Delete
+  //     specialKeys.push(36); //Home
+  //     specialKeys.push(35); //End
+  //     specialKeys.push(37); //Left
+  //     specialKeys.push(39); //Right
+  //     const ret = ((keyCode >= 48 && keyCode <= 57)
+  //       || (keyCode >= 65 && keyCode <= 90) 
+  //       || (keyCode >= 97 && keyCode <= 122) 
+  //       || (specialKeys.indexOf(ee.keyCode) !== -1 
+  //       && ee.charCode !== ee.keyCode));
+  //    // error message
+  //     if (!ret) alert("only alphanumeric can be allowed to input.");    
+  //     return ret;
+  // }
+
+
 
   return (
     // <div
@@ -129,6 +155,7 @@ function LoginPage(props) {
     //     <button type="submit">Login</button>
     //   </form>
     // </div>
+    
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -153,6 +180,7 @@ function LoginPage(props) {
                 autoFocus
                 value={username}
                 onChange={onUserNameHandler}
+                // onKeyPress={IsAlphaNumeric()}
               />
             </Grid>
 
@@ -177,7 +205,7 @@ function LoginPage(props) {
                 fullWidth
                 variant="contained"
                 color="primary"
-                
+                onKeyPress={handleKeyPress}
                 >로그인</Button>
 
                 <Grid container justify="flex-end">

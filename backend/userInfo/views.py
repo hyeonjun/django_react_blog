@@ -104,11 +104,11 @@ class UserAPI(generics.RetrieveAPIView):
 
 
 class ListAPI(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    queryset = Profile.objects.all()
     permission_classes = [
         permissions.AllowAny,
     ]
-    serializer_class = UserSerializer
+    serializer_class = ProfileSerializer
 #
 #
 #

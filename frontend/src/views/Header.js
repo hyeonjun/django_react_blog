@@ -29,7 +29,7 @@ function Header(props){
   // } else {}
 
   useEffect(()=>{
-        fetch('http://39.118.174.168:8000/api/current_user/', {
+        fetch('http://39.118.174.168:3653/api/current_user/', {
         headers: {
             Authorization: `JWT ${localStorage.getItem('token')}`
         }
@@ -39,7 +39,7 @@ function Header(props){
       // 현재 유저 정보 받아왔다면, 로그인 상태로 state 업데이트 하고
         if (json.id) {
         //유저정보를 받아왔으면 해당 user의 프로필을 받아온다.
-        }fetch('http://39.118.174.168:8000/api/profile/' + json.id + '/update/',{
+        }fetch('http://39.118.174.168:3653/api/profile/' + json.id + '/update/',{
         method : 'PATCH',
         headers: {
             Authorization: `JWT ${localStorage.getItem('token')}`

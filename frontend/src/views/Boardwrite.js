@@ -198,8 +198,8 @@ function Boardwrite() {
                     uiColor: "#AADC6E",
                     // filebrowserBrowseUrl: 'http://39.118.174.168:8000/media/board/',
                     // filebrowserImageBrowseUrl: 'http://39.118.174.168:8000/ckeditor/browse/',
-                    filebrowserUploadUrl: 'http://39.118.174.168:8000/media/board/',
-                    filebrowserImageUploadUrl: 'http://39.118.174.168:8000/ckeditor/upload/',
+                    filebrowserUploadUrl: 'http://39.118.174.168:3653/media/board/',
+                    filebrowserImageUploadUrl: 'http://39.118.174.168:3653/ckeditor/upload/',
                     // ckfinder: {
                     //   // Upload the images to the server using the CKFinder QuickUpload command.
                     //   uploadUrl: 'http://39.118.174.168:8000/ckeditor/upload/'

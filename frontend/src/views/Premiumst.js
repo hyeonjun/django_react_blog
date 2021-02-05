@@ -15,14 +15,14 @@ function Premiumst(){
     useEffect(()=>{
         pgN === "like"
         ?(
-            fetch('http://39.118.174.168:8000/board/premiumst/like/')
+            fetch('http://39.118.174.168:3653/board/premiumst/like/')
             .then((res)=>res.json())
             .then((posts)=>{
                 setTodoList(posts);
             })
         )
         :(
-            fetch('http://39.118.174.168:8000/board/premiumst/')
+            fetch('http://39.118.174.168:3653/board/premiumst/')
             .then((res)=>res.json())
             .then((posts)=>{
                 console.log(posts);
@@ -84,7 +84,7 @@ function Premiumst(){
                                                 (
                                                     <Link to={"/premiumstdetail/" + a.id}>
                                                         <div className="arcticle-img">
-                                                            {<img src="http://39.118.174.168:8000/media/board/BasicBoard.png" alt=""></img>}
+                                                            {<img src="http://39.118.174.168:3653/media/board/BasicBoard.png" alt=""></img>}
                                                         </div>
                                                     </Link>
                                                 )
@@ -137,7 +137,7 @@ function Premiumst(){
                                             (
                                                 <Link to={"/premiumstdetail/" + a.id}>
                                                     <div className="arcticle-img">
-                                                        {<img src="http://39.118.174.168:8000/media/board/BasicBoard.png" alt=""></img>}
+                                                        {<img src="http://39.118.174.168:3653/media/board/BasicBoard.png" alt=""></img>}
                                                     </div>
                                                 </Link>
                                             )

@@ -15,14 +15,14 @@ function Partner(){
     useEffect(()=>{
         pgN === "like"
         ?(
-            fetch('http://39.118.174.168:8000/board/partner/like/')
+            fetch('http://39.118.174.168:3653/board/partner/like/')
             .then((res)=>res.json())
             .then((posts)=>{
                 setTodoList(posts);
             })
         )
         :(
-            fetch('http://39.118.174.168:8000/board/partner/')
+            fetch('http://39.118.174.168:3653/board/partner/')
             .then((res)=>res.json())
             .then((posts)=>{
                 
@@ -119,7 +119,7 @@ function Partner(){
                                                 (
                                                     <Link to={"/partnerdetail/" + a.id}>
                                                         <div className="arcticle-img">
-                                                            {<img src="http://39.118.174.168:8000/media/board/BasicBoard.png" alt=""></img>}
+                                                            {<img src="http://39.118.174.168:3653/media/board/BasicBoard.png" alt=""></img>}
                                                         </div>
                                                     </Link>
                                                 )
@@ -172,7 +172,7 @@ function Partner(){
                                             (
                                                 <Link to={"/partnerdetail/" + a.id}>
                                                     <div className="arcticle-img">
-                                                        {<img src="http://39.118.174.168:8000/media/board/BasicBoard.png" alt=""></img>}
+                                                        {<img src="http://39.118.174.168:3653/media/board/BasicBoard.png" alt=""></img>}
                                                     </div>
                                                 </Link>
                                             )

@@ -60,14 +60,14 @@ function Update(props){
     }
 
     useEffect(()=>{
-        fetch('http://39.118.174.168:8000/api/current_user/', {
+        fetch('http://39.118.174.168:3653/api/current_user/', {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
                 }
                 })
                 .then(res => res.json())
                 .then(json => {
-                fetch('http://39.118.174.168:8000/api/profile/' + json.id + '/update/',{
+                fetch('http://39.118.174.168:3653/api/profile/' + json.id + '/update/',{
                         method : 'PATCH',
                         headers: {
                             Authorization: `JWT ${localStorage.getItem('token')}`
@@ -98,7 +98,7 @@ function Update(props){
                     })
                 })  
                 
-        fetch('http://39.118.174.168:8000/board/'+ urls + pgN + "/")
+        fetch('http://39.118.174.168:3653/board/'+ urls + pgN + "/")
         .then((res)=>res.json())
             .then((posts)=>{
                 // console.log(urls);
@@ -112,7 +112,7 @@ function Update(props){
                 let D = posts.pub_date.split('-')[2].split('T')[0]
                 setDetailDate(Y + "년 " + M + "월 " + D + "일")
                 setInfomationFilterList(posts.infomation.split(','))
-                fetch('http://39.118.174.168:8000/api/profile/' + posts.user_id + '/')
+                fetch('http://39.118.174.168:3653/api/profile/' + posts.user_id + '/')
                 .then((res)=>res.json())
                 .then((info)=>{
                     setDetailUserInfo(info)
@@ -131,7 +131,7 @@ function Update(props){
         form_data.append('profileImage', sendData.profileImage)
         form_data.append('user_id', sendData.user_id);
         
-        fetch("http://39.118.174.168:8000/board/" + urls + pgN + "/update/", {
+        fetch("http://39.118.174.168:3653/board/" + urls + pgN + "/update/", {
             method : 'PATCH',
             headers: {
                 Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -271,8 +271,8 @@ function Update(props){
                           uiColor: "#AADC6E",
                           // filebrowserBrowseUrl: 'http://39.118.174.168:8000/media/board/',
                           // filebrowserImageBrowseUrl: 'http://39.118.174.168:8000/ckeditor/browse/',
-                          filebrowserUploadUrl: 'http://39.118.174.168:8000/media/board/',
-                          filebrowserImageUploadUrl: 'http://39.118.174.168:8000/ckeditor/upload/',
+                          filebrowserUploadUrl: 'http://39.118.174.168:3653/media/board/',
+                          filebrowserImageUploadUrl: 'http://39.118.174.168:3653/ckeditor/upload/',
                           headers: {
                             'X-CSRFToken': csrftoken,
                           }

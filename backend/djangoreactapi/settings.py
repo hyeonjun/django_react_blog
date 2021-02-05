@@ -221,5 +221,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #사용자가 업로드한 파일 관리
 
+# HOST_URL = 'http://www.loltopia.com'
+# if DEBUG:
+#     HOST_URL = 'http://39.118.174.168:3653'
+
 
 

@@ -15,14 +15,15 @@ function Premium(){
     useEffect(()=>{
         pgN === "like"
         ?(
-            fetch('http://39.118.174.168:8000/board/premium/like/')
+            fetch('http://39.118.174.168:3653/board/premium/like/')
             .then((res)=>res.json())
             .then((posts)=>{
+                console.log(posts);
                 setTodoList(posts);
             })
         )
         :(
-            fetch('http://39.118.174.168:8000/board/premium/')
+            fetch('http://39.118.174.168:3653/board/premium/')
             .then((res)=>res.json())
             .then((posts)=>{
                 
@@ -99,7 +100,7 @@ function Premium(){
                                 let Num;
                                 let list =  a.infomation.split(',')
                                 let path = a.contents.match('(http://39.118.174.168([^>])+(.jpg|.jpge|.png|.gif))');
-
+                                console.log(a);
                                 if(languagefilterList.length !== 0){
                                     languagefilterList.map((c)=>{
                                         if(list.indexOf(c) !== -1 && Num !== 0){
@@ -119,7 +120,7 @@ function Premium(){
                                                 (
                                                     <Link to={"/premiumdetail/" + a.id}>
                                                         <div className="arcticle-img">
-                                                            {<img src="http://39.118.174.168:8000/media/board/BasicBoard.png" alt=""></img>}
+                                                            {<img src="http://39.118.174.168:3653/media/board/BasicBoard.png" alt=""></img>}
                                                         </div>
                                                     </Link>
                                                 )
@@ -172,7 +173,7 @@ function Premium(){
                                             (
                                                 <Link to={"/premiumdetail/" + a.id}>
                                                     <div className="arcticle-img">
-                                                        {<img src="http://39.118.174.168:8000/media/board/BasicBoard.png" alt=""></img>}
+                                                        {<img src="http://39.118.174.168:3653/media/board/BasicBoard.png" alt=""></img>}
                                                     </div>
                                                 </Link>
                                             )

@@ -23,7 +23,8 @@ import Update from './views/Update';
 function App(){
 
   const [modal, setModal] = useState(false);
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState([]);
+  const [idConfirm, setConfirm] = useState(false);
   let [isAuthenticated, setisAuthenticated] = useState(localStorage.getItem('token') ? true : false)
 
   const userHasAuthenticated = (authenticated, username, token) => { 
@@ -60,15 +61,14 @@ function App(){
     if(isAuthenticated) {
       //Token 값이 타당간가 /validate 요청을 통해 확인하고
       // 상태 코드가 200이라면 /api/current 요청으로 user정보 받아옴
-      console.log(`${localStorage.getItem('token')}`);
-      fetch('http://39.118.174.168:8000/api/validate/', {
+      fetch('http://39.118.174.168:3653/api/validate/', {
         method: 'POST',
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
       })
       .then(res => {
-        fetch('http://39.118.174.168:8000/api/current_user/', {
+        fetch('http://39.118.174.168:3653/api/current_user/', {
           method: 'GET',
           headers: {
             Authorization: `JWT ${localStorage.getItem('token')}`
@@ -85,7 +85,7 @@ function App(){
             setisAuthenticated(false)
         }
         // Refresh Token을 발급 -> 만료 시간 연장
-        fetch('http://39.118.174.168:8000/api/refresh/', {
+        fetch('http://39.118.174.168:3653/api/refresh/', {
           method : 'POST',
           headers: {
             'Content-Type' : 'application/json'
@@ -172,7 +172,9 @@ function App(){
             setModal={setModal} userHasAuthenticated={userHasAuthenticated}/>
           </Route>
           <Route exact path="/register">
-            <RegisterPage setModal={setModal} userHasAuthenticated={userHasAuthenticated}/>
+            <RegisterPage setModal={setModal} userHasAuthenticated={userHasAuthenticated}
+              idConfirm={idConfirm} setConfirm={setConfirm}
+            />
           </Route> 
 
           <Route path="/Sidebarmenu" exact component={Sidebarmenu}>

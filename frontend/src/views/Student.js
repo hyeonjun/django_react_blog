@@ -15,14 +15,14 @@ function Student(){
     useEffect(()=>{
         pgN === "like"
         ?(
-            fetch('http://39.118.174.168:8000/board/student/like/')
+            fetch('http://39.118.174.168:3653/board/student/like/')
             .then((res)=>res.json())
             .then((posts)=>{
                 setTodoList(posts);
             })
         )
         :(
-            fetch('http://39.118.174.168:8000/board/student/')
+            fetch('http://39.118.174.168:3653/board/student/')
             .then((res)=>res.json())
             .then((posts)=>{
                 
@@ -118,7 +118,7 @@ function Student(){
                                                 (
                                                     <Link to={"/studentdetail/" + a.id}>
                                                         <div className="arcticle-img">
-                                                            {<img src="http://39.118.174.168:8000/media/board/BasicBoard.png" alt=""></img>}
+                                                            {<img src="http://39.118.174.168:3653/media/board/BasicBoard.png" alt=""></img>}
                                                         </div>
                                                     </Link>
                                                 )
@@ -171,7 +171,7 @@ function Student(){
                                             (
                                                 <Link to={"/studentdetail/" + a.id}>
                                                     <div className="arcticle-img">
-                                                        {<img src="http://39.118.174.168:8000/media/board/BasicBoard.png" alt=""></img>}
+                                                        {<img src="http://39.118.174.168:3653/media/board/BasicBoard.png" alt=""></img>}
                                                     </div>
                                                 </Link>
                                             )
